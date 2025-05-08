@@ -1,0 +1,56 @@
+---
+- name: Deploy web server on servidores
+  hosts: servidores
+  become: true
+
+  tasks:
+    - name: Install httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+
+    - name: Enable and start httpd service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Deploy virtual host config template
+      ansible.builtin.template:
+        src: templates/vhost.conf.j2
+        dest: /etc/httpd/conf.d/vhost.conf
+      notify: Restart httpd
+
+    - name: Ensure virtual host directory exists
+      ansible.builtin.file:
+        path: "/var/www/vhosts/{{ ansible_hostname }}"
+        state: directory
+        mode: '0755'
+        owner: apache
+        group: apache
+        recurse: true
+
+    - name: Copy index.html to vhost directory
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: "/var/www/vhosts/{{ ansible_hostname }}/index.html"
+        owner: apache
+        group: apache
+        mode: '0644'
+
+    - name: Open HTTP and HTTPS ports in firewall
+      ansible.posix.firewalld:
+        service: "{{ item }}"
+        permanent: true
+        immediate: true
+        state: enabled
+      loop:
+        - http
+        - https
+
+  handlers:
+    - name: Restart httpd
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+
