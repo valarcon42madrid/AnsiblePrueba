@@ -80,10 +80,10 @@ Importa y ejecuta ambos playbooks:
 - import_playbook: dev_deploy.yml
 - import_playbook: get_web_content.yml
   
-🔎 Comprobaciones finales
+## 🔎 Comprobaciones finales
 
 
-## Puedes verificar que todo funciona correctamente con los siguientes comandos:
+ Puedes verificar que todo funciona correctamente con los siguientes comandos:
 
 
 1. 🔥 Apache
