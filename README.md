@@ -82,7 +82,9 @@ Importa y ejecuta ambos playbooks:
   
 🔎 Comprobaciones finales
 
-* Puedes verificar que todo funciona correctamente con los siguientes comandos:
+
+** Puedes verificar que todo funciona correctamente con los siguientes comandos:
+
 
 1. 🔥 Apache
 
