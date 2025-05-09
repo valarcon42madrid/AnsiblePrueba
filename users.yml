@@ -1,0 +1,26 @@
+---
+- name: Crear usuarios carlos y marta
+  hosts: servidores
+  become: true
+
+  vars:
+    packages:
+      - memcached
+      - mariadb-server
+
+  tasks:
+    - name: Crear usuario carlos
+      ansible.builtin.user:
+        name: carlos
+        state: present
+
+    - name: Crear usuario marta
+      ansible.builtin.user:
+        name: marta
+        state: present
+
+    - name: Instalar redis si hay más de 20MB de swap
+      ansible.builtin.dnf:
+        name: redis
+        state: present
+      when: ansible_swaptotal_mb > 20
