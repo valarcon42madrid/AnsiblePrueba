@@ -1,16 +1,17 @@
 # Parte I – Gestión de usuarios y variables
-Inventario
+* Inventario
 
 Se creó un archivo inventory con el grupo [servidores] que contiene vagrant1 y vagrant2.
 
-Archivo de configuración
+* Archivo de configuración
 
 Se creó ansible.cfg apuntando al inventario:
 
 
 [defaults]
 inventory = inventory
-Playbook users.yml
+
+* Playbook users.yml
 
 Se define un play que:
 
