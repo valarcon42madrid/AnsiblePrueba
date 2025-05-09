@@ -1,4 +1,4 @@
- Parte I – Gestión de usuarios y variables
+# Parte I – Gestión de usuarios y variables
 Inventario
 
 Se creó un archivo inventory con el grupo [servidores] que contiene vagrant1 y vagrant2.
@@ -31,7 +31,7 @@ Se implementa una verificación con command: id carlos y un bloque debug.
 
 Se escribe un resultado a verify.txt si carlos existe.
 
-✅ Parte II – Despliegue web y validación
+# ✅ Parte II – Despliegue web y validación
 Playbook dev_deploy.yml
 
 Se encarga de:
@@ -58,7 +58,8 @@ Archivo files/index.html
 
 Contiene un HTML estático con un mensaje genérico:
 
-<h1>Hola desde mi servidor web</h1>
+Hola desde el servidor vagrant
+
 Playbook get_web_content.yml
 
 Se ejecuta en el nodo de control.
