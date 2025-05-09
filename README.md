@@ -114,6 +114,7 @@ Debe devolver el contenido HTML con el mensaje: Hola desde mi servidor web.
 5. 🔐 Firewall
 
 firewall-cmd --list-services
+(sudo firewall-cmd --list-services)
 
 Debe listar al menos: http https.
 
