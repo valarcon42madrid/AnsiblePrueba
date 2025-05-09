@@ -79,36 +79,44 @@ Importa y ejecuta ambos playbooks:
 
 - import_playbook: dev_deploy.yml
 - import_playbook: get_web_content.yml
+  
 🔎 Comprobaciones finales
-Puedes verificar que todo funciona correctamente con los siguientes comandos:
+
+* Puedes verificar que todo funciona correctamente con los siguientes comandos:
 
 1. 🔥 Apache
 
 systemctl status httpd
+
 Debe estar activo (running) y habilitado.
 
 2. 🧾 Virtual host
 
 cat /etc/httpd/conf.d/vhost.conf
+
 Debe contener una configuración basada en {{ ansible_hostname }}.
 
 3. 📁 Archivos en el vhost
 
 ls /var/www/vhosts/$(hostname -s)
 cat /var/www/vhosts/$(hostname -s)/index.html
+
 Debe mostrar el archivo index.html copiado desde files/.
 
 4. 🌐 Acceso web desde el nodo de control
 
 curl http://vagrant1
+
 Debe devolver el contenido HTML con el mensaje: Hola desde mi servidor web.
 
 5. 🔐 Firewall
 
 firewall-cmd --list-services
+
 Debe listar al menos: http https.
 
 6. 📄 Error log de verificación web
+   
 Si la verificación web falló, revisa:
 
 cat error.log
