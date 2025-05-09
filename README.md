@@ -1,9 +1,9 @@
 # Parte I – Gestión de usuarios y variables
-* Inventario
+. . . . . . . * Inventario
 
 Se creó un archivo inventory con el grupo [servidores] que contiene vagrant1 y vagrant2.
 
-* Archivo de configuración
+. . . . . . . * Archivo de configuración
 
 Se creó ansible.cfg apuntando al inventario:
 
@@ -11,7 +11,7 @@ Se creó ansible.cfg apuntando al inventario:
 [defaults]
 inventory = inventory
 
-* Playbook users.yml
+. . . . . . .  * Playbook users.yml
 
 Se define un play que:
 
@@ -25,7 +25,7 @@ Instala redis solo si el host tiene más de 20 MB de swap:
 
 when: ansible_swaptotal_mb > 20
 
-* Verificación: verify_user.yml
+. . . . . . .  * Verificación: verify_user.yml
 
 Se corrige el uso incorrecto del módulo user con --check.
 
@@ -33,9 +33,9 @@ Se implementa una verificación con command: id carlos y un bloque debug.
 
 Se escribe un resultado a verify.txt si carlos existe.
 
-# ✅ Parte II – Despliegue web y validación
+   # ✅ Parte II – Despliegue web y validación
 
-* Playbook dev_deploy.yml
+. . . . . . . * Playbook dev_deploy.yml
 
 Se encarga de:
 
@@ -53,17 +53,17 @@ Habilitar los puertos HTTP/HTTPS en firewalld
 
 Incluir un handler para reiniciar Apache
 
-* Plantilla templates/vhost.conf.j2
+. . . . . . .  * Plantilla templates/vhost.conf.j2
 
 Define un VirtualHost apuntando al directorio específico por hostname.
 
-* Archivo files/index.html
+. . . . . . .  * Archivo files/index.html
 
 Contiene un HTML estático con un mensaje genérico:
 
 Hola desde el servidor vagrant
 
-* Playbook get_web_content.yml
+. . . . . . .  * Playbook get_web_content.yml
 
 Se ejecuta en el nodo de control.
 
@@ -73,7 +73,7 @@ Intentar recuperar contenido de http://vagrant1
 
 Si falla, escribir los detalles en error.log
 
-* Playbook maestro site.yml
+. . . . . . .  * Playbook maestro site.yml
 
 Importa y ejecuta ambos playbooks:
 
